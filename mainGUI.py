@@ -23,29 +23,31 @@ def handle_click(event):
     databaseInList = DatabaseToList.database_to_list()
     if conState == 0:
         userInput = typeEntry.get()
-        messageLog.append(userInput)
+        messageLog.append([userInput,"user"])
         typeEntry.delete(0,tk.END)
-        if(not userInput.replace(' ','').isalpha()) or (len(userInput.split()) != 1):
-            messageLog.append("Please try again, remember to use only letters.")
+        if(not userInput.replace(' ','').isalpha()):
+            messageLog.append(["Please try again, remember to use only letters.","bot"])
+        elif(len(userInput.split()) != 1):
+            messageLog.append(["Please try again, remember to only use one word for the greeting.","bot"])
         else:
-            messageLog.append(GettingStarted.gettingStarted())
+            messageLog.append([GettingStarted.gettingStarted(),"bot"])
             conState = 1
     elif conState == 1:
         userInputSentence = typeEntry.get()
-        messageLog.append(userInputSentence)
+        messageLog.append([userInputSentence,"user"])
         typeEntry.delete(0,tk.END)
         if((not userInputSentence.replace(' ','').isalpha()) or (len(userInputSentence) == 0) ):
-            messageLog.append("Please try again, remember to use only letters.")
+            messageLog.append(["Please try again, remember to use only letters.","bot"])
         elif(len(userInputSentence.split())<=2):
-            messageLog.append(GoodbyeMessage.goodbyeMessage())
+            messageLog.append([GoodbyeMessage.goodbyeMessage(),"bot"])
             typeFrame.destroy()
             exitButton.pack()
         else:
             botAnswer,correctnessValue = BotRespons.bot_respons(userInputSentence,databaseInList)
             if correctnessValue > 1 or correctnessValue <= (1/3):
-                messageLog.append("I'm sorry, I cannot understand that sentence. Could you say it a little more simply please?")
+                messageLog.append(["I'm sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
             else:
-                messageLog.append(botAnswer)
+                messageLog.append([botAnswer,"bot"])
             correctnessValue = 0
 
 #Function to close the window
@@ -92,11 +94,11 @@ def update():
             del messageLog[0]
     #Go through each message in the message log and orient it left or right depending on which user said it
     for x in range(len(messageLog)):
-        if x%2 == 0:
-            newLabel = tk.Label(master=mainFrame,text=messageLog[x],bg="grey",fg="black")
+        if messageLog[x][1] == "bot":
+            newLabel = tk.Label(master=mainFrame,text=messageLog[x][0],bg="grey",fg="black")
             newLabel.pack(anchor="w")
         else:
-            newLabel = tk.Label(master=mainFrame,text=messageLog[x],bg="blue",fg="white")
+            newLabel = tk.Label(master=mainFrame,text=messageLog[x][0],bg="blue",fg="white")
             newLabel.pack(anchor="e")
     #Call the update again after 100ms
     window.after(100,update)
@@ -105,7 +107,7 @@ def update():
 update()
 
 #Begin the conversation between bot and user
-messageLog.append(GreetMessage.greetMessage())
+messageLog.append([GreetMessage.greetMessage(),"bot"])
 
 #Create the window loop
 window.mainloop()
