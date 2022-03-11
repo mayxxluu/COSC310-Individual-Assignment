@@ -93,8 +93,8 @@ class mainGUI:
                 self.messageLog.append(["Please try again, remember to only use one word for the greeting.","bot"])
             else:
                 self.messageLog.append([GettingStarted.gettingStarted(),"bot"])
-                conState = 1
-        elif conState == 1:
+                self.conState = 1
+        elif self.conState == 1:
             userInputSentence = self.typeEntry.get()
             self.messageLog.append([userInputSentence,"user"])
             self.typeEntry.delete(0,tk.END)
