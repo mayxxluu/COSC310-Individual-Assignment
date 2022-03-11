@@ -87,29 +87,47 @@ class mainGUI:
             userInput = self.typeEntry.get()
             self.messageLog.append([userInput,"user"])
             self.typeEntry.delete(0,tk.END)
+            #Autoscroll to bottom
+            self.mainBox.yview_pickplace("end")
             if(not userInput.replace(' ','').isalpha()):
                 self.messageLog.append(["Please try again, remember to use only letters.","bot"])
+                #Autoscroll to bottom
+                self.mainBox.yview_pickplace("end")
             elif(len(userInput.split()) != 1):
                 self.messageLog.append(["Please try again, remember to only use one word for the greeting.","bot"])
+                #Autoscroll to bottom
+                self.mainBox.yview_pickplace("end")
             else:
                 self.messageLog.append([GettingStarted.gettingStarted(),"bot"])
+                #Autoscroll to bottom
+                self.mainBox.yview_pickplace("end")
                 self.conState = 1
         elif self.conState == 1:
             userInputSentence = self.typeEntry.get()
             self.messageLog.append([userInputSentence,"user"])
             self.typeEntry.delete(0,tk.END)
+            #Autoscroll to bottom
+            self.mainBox.yview_pickplace("end")
             if((not userInputSentence.replace(' ','').isalpha()) or (len(userInputSentence) == 0) ):
                 self.messageLog.append(["Please try again, remember to use only letters.","bot"])
+                #Autoscroll to bottom
+                self.mainBox.yview_pickplace("end")
             elif(len(userInputSentence.split())<=2):
                 self.messageLog.append([GoodbyeMessage.goodbyeMessage(),"bot"])
+                #Autoscroll to bottom
+                self.mainBox.yview_pickplace("end")
                 self.typeFrame.destroy()
                 self.exitButton.pack()
             else:
                 botAnswer,correctnessValue = BotRespons.bot_respons(userInputSentence,databaseInList)
                 if correctnessValue > 1 or correctnessValue <= (1/3):
                     self.messageLog.append(["I'm sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
+                    #Autoscroll to bottom
+                    self.mainBox.yview_pickplace("end")
                 else:
                     self.messageLog.append([botAnswer,"bot"])
+                    #Autoscroll to bottom
+                    self.mainBox.yview_pickplace("end")
                 correctnessValue = 0
 
     #Function to close the window
@@ -132,8 +150,6 @@ class mainGUI:
                 self.textLineLen += 1
         #Disable the textbox
         self.mainBox.configure(state='disabled')
-        #Autoscroll to bottom
-        self.mainBox.yview_pickplace("end")
         #Call the update again after 100ms
         self.window.after(100,self.update)
 
