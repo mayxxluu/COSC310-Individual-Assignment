@@ -103,7 +103,7 @@ class mainGUI:
             elif(len(userInputSentence.split())<=2):
                 self.messageLog.append([GoodbyeMessage.goodbyeMessage(),"bot"])
                 self.typeFrame.destroy()
-                self.exitButton.pack()
+                self.exitButton.grid()
             else:
                 botAnswer,correctnessValue = BotRespons.bot_respons(userInputSentence,databaseInList)
                 if correctnessValue > 1 or correctnessValue <= (1/3):
