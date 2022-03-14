@@ -10,14 +10,14 @@ class SpellingMistakes:
         tokenizer = RegexpTokenizer(r'\w+')
         sentString = tokenizer.tokenize(str)
         count = 0
-        for i in sentString:
-            strip = i.rstrip()
+        for words in sentString:
+            strip = words.rstrip()
             if not wn.synsets(strip):
                 if not strip in stopWords:
-                    while(not wn.synsets(i) or i in stopWords):
-                        print("Word you spelt wrong: "+i)
-                        val = input("Spell "+i+" again correctly: ")
-                        i=val
+                    while(not wn.synsets(words) or words in stopWords):
+                        print("Word you spelt wrong: " + words)
+                        val = input("Spell " + words +" again correctly: ")
+                        words=val
                         sentString[count] = val
             count += 1
         return sentString
