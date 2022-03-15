@@ -1,4 +1,5 @@
 from SimilarityOfTwoSentences import SimilarityOfTwoSentences
+from spaCySentenceSimilarity import spaCySentenceSimilarity
 
 class BotRespons:
     def bot_respons(userInput, databasePrompts):
@@ -11,5 +12,11 @@ class BotRespons:
             if correctValue > bestMatch:
                 botReply = databaseList[i][1]     
                 bestMatch = correctValue    
-            
-        return botReply, bestMatch
+        
+        spaCyUsed = False
+        
+        if bestMatch <= (3/4):
+            botReply, bestMatch = spaCySentenceSimilarity.spaCy_sentence_similarity(userInput, databasePrompts)
+            spaCyUsed = True
+        
+        return botReply, bestMatch, spaCyUsed
