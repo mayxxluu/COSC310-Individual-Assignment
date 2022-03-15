@@ -4,8 +4,13 @@ from GoodbyeMessage import GoodbyeMessage
 from GettingStarted import GettingStarted
 from BotRespons import BotRespons
 from DatabaseToList import DatabaseToList
+#import's spacy data to significantly speed up the program
+import spacy_universal_sentence_encoder
 #Import tkinter to create the GUI
 import tkinter as tk
+
+
+nlp = spacy_universal_sentence_encoder.load_model('en_use_md')
 
 class mainGUI:
     def __init__(self):
@@ -105,7 +110,7 @@ class mainGUI:
                 self.typeFrame.destroy()
                 self.exitButton.grid()
             else:
-                botAnswer,correctnessValue = BotRespons.bot_respons(userInputSentence,databaseInList)
+                botAnswer,correctnessValue,spaCyUsedInBotRespons = BotRespons.bot_respons(userInputSentence,databaseInList,nlp)
                 if correctnessValue > 1 or correctnessValue <= (1/3):
                     self.messageLog.append(["I'm sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
                 else:

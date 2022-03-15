@@ -2,7 +2,7 @@ from SimilarityOfTwoSentences import SimilarityOfTwoSentences
 from spaCySentenceSimilarity import spaCySentenceSimilarity
 
 class BotRespons:
-    def bot_respons(userInput, databasePrompts):
+    def bot_respons(userInput, databasePrompts, nlp):
         databaseList = databasePrompts
         botReply = ""
         bestMatch = 0
@@ -16,7 +16,7 @@ class BotRespons:
         spaCyUsed = False
         
         if bestMatch <= (3/4):
-            botReply, bestMatch = spaCySentenceSimilarity.spaCy_sentence_similarity(userInput, databasePrompts)
+            botReply, bestMatch = spaCySentenceSimilarity.spaCy_sentence_similarity(userInput, databasePrompts, nlp)
             spaCyUsed = True
         
         return botReply, bestMatch, spaCyUsed
