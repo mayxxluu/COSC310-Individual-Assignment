@@ -141,3 +141,5 @@ I have three cats @ I love cats, I hope they make you happy.
 I have a cat @ I love cats, I hope they make you happy.
 I have a bird @ I love birds, I hope they make you happy.
 I have three birds @ I love birds, I hope they make you happy.
+Yes I do @ That is perfectly fine. What else would you like to talk about?
+No I do not @ That is perfectly fine. What else would you like to talk about?
