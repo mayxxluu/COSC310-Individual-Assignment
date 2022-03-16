@@ -1,5 +1,5 @@
-I have no friends @ I am sorry to hear that. You can always make friends.
-Because I have no friends @ We all need friends. Plus, you can always make friends.
+I have no friends @ I am sorry to hear that. You can always make friends. Why do you not have friends?
+Because I have no friends @ We all need friends. Plus, you can always make friends. Why do you not have friends?
 I like playing games @ Games are very popular. You should try playing with others if you ever feel down or alone.
 I like playing video game @ Games are very popular. You should try playing with others if you ever feel down or alone.
 I like games @ Games are very popular. You should try playing with others if you ever feel down or alone.
@@ -141,5 +141,3 @@ I have three cats @ I love cats, I hope they make you happy.
 I have a cat @ I love cats, I hope they make you happy.
 I have a bird @ I love birds, I hope they make you happy.
 I have three birds @ I love birds, I hope they make you happy.
-I have a hamster @ I love hamsters, I hope they make you happy.
-I have three hamsters @ I love hamsters, I hope they make you happy.

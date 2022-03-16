@@ -6,8 +6,7 @@ class BotSentimentResponse:
     def bot_sentiment_response(sentenceString,topicList):
         sentenceSentiment,subjectivity = SentenceSentinment.sentence_sentiment(sentenceString)
         if sentenceSentiment > 0:
-            return BroadQuestion.broad_question()
+            return BroadQuestion.broad_question(), topicList
         else:
-            newSentenceString = BotTopicQuestionAsked.bot_topic_question_asked(topicList)
-            topicList.append(newSentenceString)
-            return newSentenceString
+            newSentenceString, topicList = BotTopicQuestionAsked.bot_topic_question_asked(topicList)
+            return newSentenceString, topicList

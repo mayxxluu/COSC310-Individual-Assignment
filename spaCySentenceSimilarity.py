@@ -1,9 +1,5 @@
-import spacy_universal_sentence_encoder
-
 class spaCySentenceSimilarity:
-    def spaCy_sentence_similarity(userIn, databaselist):
-        # this loads the data
-        nlp = spacy_universal_sentence_encoder.load_model('en_use_md')
+    def spaCy_sentence_similarity(userIn, databaselist, nlp):
 
         # preps spacy with userIn
         userSentence = nlp(userIn)

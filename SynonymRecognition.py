@@ -44,30 +44,3 @@ class SynonymRecognition:
             return synonym_list
         # In case tag is not the 4 tags: Nouns, verbs, adjectives and adverbs
         return synonym_list
-
-# Test cases
-#print(SynonymRecognition.synonym_recognition("tree", "NN"))
-#print(SynonymRecognition.synonym_recognition("desks", "NNS"))
-
-#print(SynonymRecognition.synonym_recognition("swiftly", "RB"))
-#print(SynonymRecognition.synonym_recognition("greater", "RBR"))
-#print(SynonymRecognition.synonym_recognition("biggest", "RBS"))
-
-#print(SynonymRecognition.synonym_recognition("large", "JJ"))
-#print(SynonymRecognition.synonym_recognition("larger", "JJR"))
-#print(SynonymRecognition.synonym_recognition("largest", "JJS"))
-
-#print(SynonymRecognition.synonym_recognition("ask", "VB"))
-#print(SynonymRecognition.synonym_recognition("judging", "VBG"))
-#print(SynonymRecognition.synonym_recognition("pleaded", "VBD"))
-#print(SynonymRecognition.synonym_recognition("reunified", "VBN"))
-#print(SynonymRecognition.synonym_recognition("wrap", "VBP"))
-#print(SynonymRecognition.synonym_recognition("bases", "VBZ"))
-
-#print(SynonymRecognition.synonym_recognition("sdf", "UH"))
-#print(SynonymRecognition.synonym_recognition("", "TO"))
-#print(SynonymRecognition.synonym_recognition("sdf", ""))
-#print(SynonymRecognition.synonym_recognition("WRB", "WRB"))
-#print(SynonymRecognition.synonym_recognition("", ""))
-
-
