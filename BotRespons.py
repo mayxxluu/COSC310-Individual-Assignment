@@ -15,7 +15,7 @@ class BotRespons:
         
         spaCyUsed = False
         
-        if bestMatch <= (4/5):
+        if bestMatch < (4/5):
             botReply, bestMatch = spaCySentenceSimilarity.spaCy_sentence_similarity(userInput, databasePrompts, nlp)
             spaCyUsed = True
         

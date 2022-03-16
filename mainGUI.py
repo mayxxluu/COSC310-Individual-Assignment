@@ -125,7 +125,9 @@ class mainGUI:
                 self.exitButton.grid()
             else:
                 botAnswer,correctnessValue,spaCyUsedInBotRespons = BotRespons.bot_respons(userInputSentence,databaseInList,nlp)
-                if (spaCyUsedInBotRespons and (correctnessValue <= 0.9)) or ((not spaCyUsedInBotRespons) and (correctnessValue > 1 or correctnessValue <= (1/2))):
+                if (spaCyUsedInBotRespons and (correctnessValue <= 0.9)):
+                    self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
+                elif ((not spaCyUsedInBotRespons) and (correctnessValue > 1 or correctnessValue <= (1/2))):
                     self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
                 else:
                     if "?" in botAnswer:
