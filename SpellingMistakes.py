@@ -3,7 +3,8 @@ from nltk.corpus import brown
 
 class SpellingMistakes:
     def spelling_mistakes(userInput):
-        userInputLowerCaseSplit = userInput.split()
+        userInputLowerCaseSplit = userInput.lower().split()
+        userInputLowerCaseSplitOrginialSize = userInput.split() 
         #stop words are words like the, they and then
         stopWords = set(stopwords.words('english'))
         # gets a list of words
@@ -17,7 +18,7 @@ class SpellingMistakes:
                 spelledCorrect.append(True)
             else:
                 spelledCorrect.append(False)
-                wordSpelledIncorrect.append(userInputLowerCaseSplit[i])
+                wordSpelledIncorrect.append(userInputLowerCaseSplitOrginialSize[i])
         print(spelledCorrect)
         if False in spelledCorrect:
             return False, wordSpelledIncorrect
