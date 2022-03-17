@@ -16,6 +16,7 @@ In order to improve the chatbot experience, the following features have been imp
 In order to run the chatbot, you must install NLTK, NLTK Data, and spaCy - Universal Sentence Encoder onto your computer before proceeding.
 
 To install NLTK and NLTK Data, please refer to this link: https://www.nltk.org/install.html
+
 To install spaCy - Universal Sentence Encoder, please refer to this link: https://spacy.io/universe/project/spacy-universal-sentence-encoder or https://github.com/MartinoMensio/spacy-universal-sentence-encoder
 
 Once all three have been installed, clone the Github repository and run the mainGUI class.
