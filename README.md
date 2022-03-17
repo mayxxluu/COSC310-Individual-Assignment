@@ -1,7 +1,18 @@
 # Introduction
 This project's objective is to create a conversational agent that carries on a conversation with the user by responding to user’s input with prompts and questions. The role of the conversational agent that we have created is to act as a therapist that specializes in loneliness. So as you are using this program, try to stay in the mindset of a patient at a therapist’s office to bring out the most of the program's functionality.
 
-# How to run
+# What's New
+In order to improve the chatbot experience, the following features have been implemented:
+| Feature    | Description |
+| ---------- | ----------------------------------------------------------------------- |
+| Simple GUI | Previously, the chatbot conversion was held in a terminal. Now, with the use of the tkinter GUI package, the user can have a conversation with the chatbot in a much nicer interface, providing a much more realistic chatbot experience. |
+| Spelling mistakes | Previously, the chatbot would respond to misspelled words with a general error message or assumed what the user meant. Now, with the use of the NLTK corpus, the chatbot recognizes which words are misspelled and notifies the user so they can correct themselves. This ensures the chatbot understands the user correctly rather than guessing, which will increase the accuracy of the chatbot’s responses. |
+| POS tagging | The use of POS tagging and tokenization via NLTK assists in the chatbot’s ability to recognize synonyms as these identifiers help determine what type of synonyms are being used. |
+| Synonym recognition | This new implementation of synonym recognition using NLTK allows the chatbot to accept a wider range of responses, rather than being restricted to the vocabulary used in the database. |
+| Sentiment analysis tools | This new implementation of sentiment analysis using NLTK analyzes the user’s input and calculates a positive or negative sentiment score. Using this score, the chatbot can then determine what type of response to reply with. For example,  a negative sentiment score will trigger the chatbot to ask a specific question. Whereas with a positive sentiment score, the chatbot will respond with an open-ended question since the user is in a healthy headspace. |
+| Better similarity recognition | The implementation of spaCy - USE further improves the chatbot’s sentence comparison feature. This allows the chatbot to provide better, more accurate, responses to the user’s input. |
+
+# How to Run
 In order to run the chatbot, you must install NLTK, NLTK Data, and spaCy - Universal Sentence Encoder onto your computer before proceeding.
 
 To install NLTK and NLTK Data, please refer to this link: https://www.nltk.org/install.html
