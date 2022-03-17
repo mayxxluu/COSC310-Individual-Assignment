@@ -10,7 +10,7 @@ To install spaCy - Universal Sentence Encoder, please refer to this link: https:
 Once all three have been installed, clone the Github repository and run the mainGUI class.
 
 # Explanations of classes/files:
-![](program_flowchart.jpg)
+![](program_flowchart.png)
 - **BotRespons:** 
 A class that has a single method. The method, bot_respons, takes in three inputs: a string, list, and a module from Universal Sentence Encoder. Next, the method will invoke SimilarityOfTwoSentences's sentence_similarity in a loop. The loop iterates through each element of the inputted list. The loop will determine the best "answer" and the respective matching score. If the matching score is less than 0.8, then the method will invoke spaCySentenceSimilarity's spaCy_sentence_similarity, passing through the inputted string, list, and a module from Universal Sentence Encoder. Additionally, will set "spaCyUsed" to True. The spaCy_sentence_similarity will return the best "answer" and the respective matching score. The method, bot_respons, returns the best "answer", determined via either sentence_similarity or spaCy_sentence_similarity, its respective matching score, and whether spaCy_sentence_similarity was used. 
 - **BotSentimentResponse:**
