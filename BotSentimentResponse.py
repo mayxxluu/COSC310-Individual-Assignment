@@ -5,6 +5,7 @@ from BotTopicQuestionAsked import BotTopicQuestionAsked
 class BotSentimentResponse:
     def bot_sentiment_response(sentenceString,topicList):
         sentenceSentiment,subjectivity = SentenceSentinment.sentence_sentiment(sentenceString)
+        print(f"Sentiment Value: {sentenceSentiment}")
         if sentenceSentiment > 0:
             return BroadQuestion.broad_question(), topicList
         else:
