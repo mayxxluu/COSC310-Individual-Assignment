@@ -125,7 +125,7 @@ class mainGUI:
                 self.exitButton.grid()
             else:
                 botAnswer,correctnessValue,spaCyUsedInBotRespons = BotRespons.bot_respons(userInputSentence,databaseInList,nlp)
-                if (spaCyUsedInBotRespons and (correctnessValue <= 0.9)):
+                if (spaCyUsedInBotRespons and (correctnessValue <= 0.8)):
                     self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
                 elif ((not spaCyUsedInBotRespons) and (correctnessValue > 1 or correctnessValue <= (1/2))):
                     self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
@@ -137,6 +137,7 @@ class mainGUI:
                         print(f"Bot: {botAnswer} {question}")
                         self.messageLog.append([f"{botAnswer} {question}","bot"])
                 print(f"spaCy Used: {spaCyUsedInBotRespons}")
+                print(f"POS tags: {SentencePOSTagger.sentence_pos_tagger(userInputSentence)}")
                 print(f"Highest Value: {correctnessValue}")
                 print(f"Questions Asked: {self.questionsAsked}")
                 correctnessValue = 0
