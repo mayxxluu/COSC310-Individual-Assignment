@@ -7,6 +7,7 @@ from DatabaseToList import DatabaseToList
 from BotSentimentResponse import BotSentimentResponse
 from SpellingMistakes import SpellingMistakes
 #import's spacy data to significantly speed up the program
+from SentencePOSTagger import SentencePOSTagger
 import spacy_universal_sentence_encoder
 #Import tkinter to create the GUI
 import tkinter as tk
