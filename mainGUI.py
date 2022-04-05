@@ -6,6 +6,7 @@ from BotRespons import BotRespons
 from DatabaseToList import DatabaseToList
 from BotSentimentResponse import BotSentimentResponse
 from SpellingMistakes import SpellingMistakes
+from translate import translate
 #import's spacy data to significantly speed up the program
 from SentencePOSTagger import SentencePOSTagger
 import spacy_universal_sentence_encoder
@@ -87,6 +88,7 @@ class mainGUI:
 
         #Begin the conversation between bot and user
         self.messageLog.append([GreetMessage.greetMessage(),"bot"])
+        self.messageLog.append([translate(GreetMessage.greetMessage()),"bot"])
 
         #Create the window loop
         self.window.mainloop()
@@ -100,13 +102,18 @@ class mainGUI:
             spelledCorrect, wordSpelledIncorrect = SpellingMistakes.spelling_mistakes(userInput)
             if(not userInput.replace(' ','').isalpha()):
                 self.messageLog.append(["Please try again, remember to use only letters.","bot"])
+                self.messageLog.append([translate("Please try again, remember to use only letters."), "bot"])
             elif(len(userInput.split()) != 1):
                 self.messageLog.append(["Please try again, remember to only use one word for the greeting.","bot"])
+                self.messageLog.append([translate("Please try again, remember to only use one word for the greeting."), "bot"])
             elif(not spelledCorrect):
                 self.messageLog.append(["Please try again, there were spelling mistakes.","bot"])
                 self.messageLog.append([f"The misspelled word(s) was: {wordSpelledIncorrect}","bot"])
+                self.messageLog.append([translate("Please try again, there were spelling mistakes."), "bot"])
+                self.messageLog.append([translate("The misspelled word(s) was:")+f"{wordSpelledIncorrect}", "bot"])
             else:
                 self.messageLog.append([GettingStarted.gettingStarted(),"bot"])
+                self.messageLog.append([translate(GettingStarted.gettingStarted()), "bot"])
                 self.conState = 1
         elif self.conState == 1:
             userInputSentence = self.typeEntry.get()
@@ -115,28 +122,37 @@ class mainGUI:
             spelledCorrect, wordSpelledIncorrect = SpellingMistakes.spelling_mistakes(userInputSentence)
             if((not userInputSentence.replace(' ','').isalpha())):
                 self.messageLog.append(["Please try again, remember to use only letters.","bot"])
+                self.messageLog.append([translate("Please try again, remember to use only letters."), "bot"])
             elif (len(userInputSentence) == 0):
                 self.messageLog.append(["Nothing was entered, please try again. Remember to use only letters.","bot"])
+                self.messageLog.append([translate("Nothing was entered, please try again. Remember to use only letters."),"bot"])
             elif (not spelledCorrect):
                 self.messageLog.append(["Please try again, there were spelling mistakes.","bot"])
                 self.messageLog.append([f"The misspelled word(s) was: {wordSpelledIncorrect}","bot"])
+                self.messageLog.append([translate("Please try again, there were spelling mistakes."), "bot"])
+                self.messageLog.append([translate("The misspelled word(s) was:")+f"{wordSpelledIncorrect}", "bot"])
             elif(len(userInputSentence.split())<=1):
                 self.messageLog.append([GoodbyeMessage.goodbyeMessage(),"bot"])
+                self.messageLog.append([translate(GoodbyeMessage.goodbyeMessage()), "bot"])
                 self.typeFrame.destroy()
                 self.exitButton.grid()
             else:
                 botAnswer,correctnessValue,spaCyUsedInBotRespons = BotRespons.bot_respons(userInputSentence,databaseInList,nlp)
                 if (spaCyUsedInBotRespons and (correctnessValue <= 0.8)):
                     self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
+                    self.messageLog.append([translate("I am sorry, I cannot understand that sentence. Could you say it a little more simply please?"),"bot"])
                 elif ((not spaCyUsedInBotRespons) and (correctnessValue > 1 or correctnessValue <= (1/2))):
                     self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
+                    self.messageLog.append([translate("I am sorry, I cannot understand that sentence. Could you say it a little more simply please?"),"bot"])
                 else:
                     if "?" in botAnswer:
                         self.messageLog.append([f"{botAnswer}","bot"])
+                        self.messageLog.append([translate(f"{botAnswer}"), "bot"])
                     else:
                         question, self.questionsAsked = BotSentimentResponse.bot_sentiment_response(userInputSentence, self.questionsAsked)
                         print(f"Bot: {botAnswer} {question}")
                         self.messageLog.append([f"{botAnswer} {question}","bot"])
+                        self.messageLog.append([translate(f"{botAnswer} {question}"), "bot"])
                 print(f"spaCy Used: {spaCyUsedInBotRespons}")
                 print(f"POS tags: {SentencePOSTagger.sentence_pos_tagger(userInputSentence)}")
                 print(f"Highest Value: {correctnessValue}")
