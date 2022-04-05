@@ -58,5 +58,5 @@ A unit test, containing 25 tests, meant to test the robustness of SimilarityOfTw
 A unit test, containing 20 tests, meant to test the robustness of SynonymRecognition.py
 - **TokenizeWithoutPunctuation:**
 A class with a single method. The method, tokenize_without_punctuation, takes in a String. The method utilizes NLTK's RegexpTokenizer to tokenize the inputted String. When invoking NLTK's RegexpTokenizer, a list is returned with the tokenized content. Said list from NLTK is returned.
--**Translate:**
+- **Translate:**
 A class with a single method. The method, translate, takes in a String. The method then takes that string and translates it to the desired language (in this case, Korean) using JSON.
