@@ -5,12 +5,8 @@ This project's objective is to create a conversational agent that carries on a c
 In order to improve the chatbot experience, the following features have been implemented:
 | Feature    | Description |
 | ---------- | ----------------------------------------------------------------------- |
-| Simple GUI | Previously, the chatbot conversion was held in a terminal. Now, with the use of the tkinter GUI package, the user can have a conversation with the chatbot in a much nicer interface, providing a much more realistic chatbot experience. ![Imgur](https://i.imgur.com/Ku5wqu6.png) |
-| Spell-checker | Previously, the chatbot would respond to misspelled words with a general error message or assumed what the user meant. Now, with the use of the NLTK corpus, the chatbot recognizes which words are misspelled and notifies the user so they can correct themselves. This ensures the chatbot understands the user correctly rather than guessing, which will increase the accuracy of the chatbot’s responses. ![Imgur](https://i.imgur.com/LS9cF6H.png) |
-| POS Tagging & Tokenization | The use of POS tagging and tokenization via NLTK assists in the chatbot’s ability to recognize synonyms as these identifiers help determine what type of synonyms are being used. ![Imgur](https://i.imgur.com/nhzxPf1.png) |
-| Synonym Recognition | This new implementation of synonym recognition using NLTK allows the chatbot to accept a wider range of responses, rather than being restricted to the vocabulary used in the database. ![Imgur](https://i.imgur.com/ZGy1LOv.png) |
-| Sentiment Analysis Tools | This new implementation of sentiment analysis using NLTK analyzes the user’s input and calculates a positive or negative sentiment score. Using this score, the chatbot can then determine what type of response to reply with. For example,  a negative sentiment score will trigger the chatbot to ask a specific question. Whereas with a positive sentiment score, the chatbot will respond with an open-ended question since the user is in a healthy headspace. ![Imgur](https://i.imgur.com/0Omlh6r.png) |
-| Better Similarity Recognition | The implementation of spaCy - USE further improves the chatbot’s sentence comparison feature. This allows the chatbot to provide better, more accurate, responses to the user’s input. ![Imgur](https://i.imgur.com/1KzO11o.png) |
+| English-Korean Translation | Using the Text Translator API from Microsoft, the chatbot will now provide its responses in both English and Korean. ![Imgur](https://i.imgur.com/dOSScNy.png) |
+| Wikipedia References | Will be updated soon. |
 
 # How to Run
 In order to run the chatbot, you must install NLTK, NLTK Data, and spaCy - Universal Sentence Encoder onto your computer before proceeding.
@@ -62,3 +58,5 @@ A unit test, containing 25 tests, meant to test the robustness of SimilarityOfTw
 A unit test, containing 20 tests, meant to test the robustness of SynonymRecognition.py
 - **TokenizeWithoutPunctuation:**
 A class with a single method. The method, tokenize_without_punctuation, takes in a String. The method utilizes NLTK's RegexpTokenizer to tokenize the inputted String. When invoking NLTK's RegexpTokenizer, a list is returned with the tokenized content. Said list from NLTK is returned.
+-**Translate:**
+A class with a single method. The method, translate, takes in a String. The method then takes that string and translates it to the desired language (in this case, Korean) using JSON.
