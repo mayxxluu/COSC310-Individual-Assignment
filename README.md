@@ -5,15 +5,18 @@ This project's objective is to create a conversational agent that carries on a c
 In order to improve the chatbot experience, the following features have been implemented:
 | Feature    | Description |
 | ---------- | ----------------------------------------------------------------------- |
-| English-Korean Translation | Using the Text Translator API from Microsoft, the chatbot will now provide its responses in both English and Korean. ![Imgur](https://i.imgur.com/dOSScNy.png) |
-| Wikipedia References | Will be updated soon. |
+| English-Korean Translation | Using the Text Translator API from Microsoft, the chatbot will now provide its responses in both English and Korean, reaching a wider target audience. ![Imgur](https://i.imgur.com/dOSScNy.png) |
+| Wikipedia References | Using the Wikipedia API, the chatbot can now respond to 'what' questions from the user by searching the topic and extracting snippets from the corresponding Wikipedia page to display to the user. ![Imgur](https://i.imgur.com/NSDGqoF.png)|
 
 # How to Run
-In order to run the chatbot, you must install NLTK, NLTK Data, and spaCy - Universal Sentence Encoder onto your computer before proceeding.
+In order to run the chatbot, you must install NLTK, NLTK Data, and spaCy - Universal Sentence Encoder, and Wikipedia API onto your computer before proceeding.
 
 To install NLTK and NLTK Data, please refer to this link: https://www.nltk.org/install.html
 
 To install spaCy - Universal Sentence Encoder, please refer to this link: https://spacy.io/universe/project/spacy-universal-sentence-encoder or https://github.com/MartinoMensio/spacy-universal-sentence-encoder
+
+To install the Wikipedia API, enter the following command into your terminal:
+`pip install wikipedia`
 
 Once all three have been installed, clone the Github repository and run the mainGUI class.
 
@@ -59,4 +62,6 @@ A unit test, containing 20 tests, meant to test the robustness of SynonymRecogni
 - **TokenizeWithoutPunctuation:**
 A class with a single method. The method, tokenize_without_punctuation, takes in a String. The method utilizes NLTK's RegexpTokenizer to tokenize the inputted String. When invoking NLTK's RegexpTokenizer, a list is returned with the tokenized content. Said list from NLTK is returned.
 - **Translate:**
-A class with a single method. The method, translate, takes in a String. The method then takes that string and translates it to the desired language (in this case, Korean) using JSON.
+Contains a single method. The method, translate, takes in a String. The method then takes that string and translates it to the desired language (in this case, Korean) using JSON.
+- **Wiki:**
+Contains a single method. The method, getWiki, takes in a String. The method then analyzes the string to see if it contains a 'what'. If it does, it will search the sentence for nouns or noun phrases and display the corresponding Wikipedia page with that information. 
