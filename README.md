@@ -18,7 +18,7 @@ To install spaCy - Universal Sentence Encoder, please refer to this link: https:
 To install the Wikipedia API, enter the following command into your terminal:
 `pip install wikipedia`
 
-Once all three have been installed, clone the Github repository and run the mainGUI class.
+Once all four have been installed, clone the Github repository and run the mainGUI class.
 
 # Explanations of classes/files:
 ![](program_flowchart.png)
