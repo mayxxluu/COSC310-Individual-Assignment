@@ -18,8 +18,8 @@ def getWiki(sentence):
         if len(np) != 0:
             try:
                 print(np[0])
-                summary = wikipedia.summary(np[0], sentences=1)
-                learnMore = "\nIf you would like to learn more, please visit: " + wikipedia.page(np[0]).url
+                summary = wikipedia.summary(np[0], sentences=1, auto_suggest=False)
+                learnMore = "\nIf you would like to learn more, please visit: " + wikipedia.page(np[0], auto_suggest=False).url
                 q = "\nIs there anything else you would like to share?"
                 result = summary + learnMore + q
             except wikipedia.DisambiguationError as e:
@@ -27,8 +27,8 @@ def getWiki(sentence):
         else:
             try:
                 print(nn[0])
-                summary = wikipedia.summary(nn[0], sentences=1)
-                learnMore = "\nIf you would like to learn more, please visit: " + wikipedia.page(nn[0]).url
+                summary = wikipedia.summary(nn[0], sentences=1, auto_suggest=False)
+                learnMore = "\nIf you would like to learn more, please visit: " + wikipedia.page(nn[0], auto_suggest=False).url
                 q = "\nIs there anything else you would like to share?"
                 result = summary + learnMore + q
             except wikipedia.DisambiguationError as e:
