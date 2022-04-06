@@ -7,6 +7,7 @@ from DatabaseToList import DatabaseToList
 from BotSentimentResponse import BotSentimentResponse
 from SpellingMistakes import SpellingMistakes
 from translate import translate
+from wiki import getWiki
 #import's spacy data to significantly speed up the program
 from SentencePOSTagger import SentencePOSTagger
 import spacy_universal_sentence_encoder
@@ -138,21 +139,24 @@ class mainGUI:
                 self.exitButton.grid()
             else:
                 botAnswer,correctnessValue,spaCyUsedInBotRespons = BotRespons.bot_respons(userInputSentence,databaseInList,nlp)
-                if (spaCyUsedInBotRespons and (correctnessValue <= 0.8)):
-                    self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
-                    self.messageLog.append([translate("I am sorry, I cannot understand that sentence. Could you say it a little more simply please?"),"bot"])
-                elif ((not spaCyUsedInBotRespons) and (correctnessValue > 1 or correctnessValue <= (1/2))):
-                    self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
-                    self.messageLog.append([translate("I am sorry, I cannot understand that sentence. Could you say it a little more simply please?"),"bot"])
-                else:
-                    if "?" in botAnswer:
+                if getWiki(userInputSentence) == -1:
+                    if spaCyUsedInBotRespons and (correctnessValue <= 0.8):
+                        self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
+                        self.messageLog.append([translate("I am sorry, I cannot understand that sentence. Could you say it a little more simply please?"),"bot"])
+                    elif (not spaCyUsedInBotRespons) and (correctnessValue > 1 or correctnessValue <= (1 / 2)):
+                        self.messageLog.append(["I am sorry, I cannot understand that sentence. Could you say it a little more simply please?","bot"])
+                        self.messageLog.append([translate("I am sorry, I cannot understand that sentence. Could you say it a little more simply please?"),"bot"])
+                    elif "?" in botAnswer:
                         self.messageLog.append([f"{botAnswer}","bot"])
                         self.messageLog.append([translate(f"{botAnswer}"), "bot"])
                     else:
-                        question, self.questionsAsked = BotSentimentResponse.bot_sentiment_response(userInputSentence, self.questionsAsked)
+                        question, self.questionsAsked = BotSentimentResponse.bot_sentiment_response(userInputSentence,self.questionsAsked)
                         print(f"Bot: {botAnswer} {question}")
-                        self.messageLog.append([f"{botAnswer} {question}","bot"])
+                        self.messageLog.append([f"{botAnswer} {question}", "bot"])
                         self.messageLog.append([translate(f"{botAnswer} {question}"), "bot"])
+                elif getWiki(userInputSentence) != -1:
+                    self.messageLog.append([getWiki(userInputSentence), "bot"])
+                    self.messageLog.append([translate(getWiki(userInputSentence)), "bot"])
                 print(f"spaCy Used: {spaCyUsedInBotRespons}")
                 print(f"POS tags: {SentencePOSTagger.sentence_pos_tagger(userInputSentence)}")
                 print(f"Highest Value: {correctnessValue}")
