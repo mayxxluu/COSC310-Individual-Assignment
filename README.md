@@ -5,7 +5,7 @@ This project's objective is to create a conversational agent that carries on a c
 In order to improve the chatbot experience, the following features have been implemented:
 | Feature    | Description |
 | ---------- | ----------------------------------------------------------------------- |
-| English-Korean Translation | Using the Text Translator API from Microsoft, the chatbot will now provide its responses in both English and Korean, reaching a wider target audience. ![Imgur](https://i.imgur.com/dOSScNy.png) |
+| English-Korean Responses | Using the Text Translator API from Microsoft, the chatbot will now provide its responses in both English and Korean, reaching a wider target audience. ![Imgur](https://i.imgur.com/dOSScNy.png) |
 | Wikipedia References | Using the Wikipedia API, the chatbot can now respond to 'what' questions from the user by searching the topic and extracting snippets from the corresponding Wikipedia page to display to the user. ![Imgur](https://i.imgur.com/NSDGqoF.png)|
 
 # How to Run
