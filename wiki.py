@@ -1,19 +1,24 @@
 import wikipedia
 from textblob import TextBlob
 
+# Obtain Wikipedia summary method
 def getWiki(sentence):
-    phrase = sentence
-    blob = TextBlob(phrase)
+    blob = TextBlob(sentence)
+    # POS tag the sentence
     tagged = blob.tags
+    # Keep record of any noun phrases in the sentence
     np = blob.noun_phrases
     nn = []
     question = False
+    # Determine if the sentence is a question and keep record of any noun(s)
     for word,pos in tagged:
         if pos == 'WP':
             question = True
         if pos == 'NN' or pos == 'NNS':
             nn.append(word)
 
+    # If the sentence is a question, search Wikipedia with the first noun phrase or noun found
+    # If the search is ambiguous (multiple pages with the same noun (phrase), ask for clarification
     if question:
         if len(np) != 0:
             try:
