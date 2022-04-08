@@ -13,6 +13,7 @@ location = "global"
 path = '/translate'
 constructed_url = endpoint + path
 
+# Set parameters such as what is the inputted language and desired outputted (translated) language
 params = {
     'api-version': '3.0',
     'from': 'en',
@@ -26,13 +27,13 @@ headers = {
     'X-ClientTraceId': str(uuid.uuid4())
 }
 
-
+# Translation method
 def translate(sentence):
-    # You can pass more than one object in body.
     body = [{'text': sentence}]
 
     request = requests.post(constructed_url, params=params, headers=headers, json=body)
-    #response = request.json()[0]['translations'][0]
+    # Omit any information other than the translation(s)
     response = request.json()[0]['translations'][0]
 
+    # Extract only the translated text and return it
     return json.dumps(response["text"], sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': '))
