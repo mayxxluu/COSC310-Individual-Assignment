@@ -64,4 +64,4 @@ A class with a single method. The method, tokenize_without_punctuation, takes in
 - **Translate:**
 Contains a single method. The method, translate, takes in a String. The method then takes that string and translates it to the desired language (in this case, Korean) using JSON.
 - **Wiki:**
-Contains a single method. The method, getWiki, takes in a String. The method then analyzes the string to see if it contains a 'what'. If it does, it will search the sentence for nouns or noun phrases and display the corresponding Wikipedia page with that information. 
+Contains a single method. The method, getWiki, takes in a String. The method then analyzes the string to see if it contains a question word by searching for the POS tag ‘WP’. If it does contain a ‘WP’ tag, it will search the sentence for nouns or noun phrases and display the corresponding Wikipedia page using the first noun/noun phrase found.
