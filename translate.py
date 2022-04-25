@@ -3,7 +3,7 @@ import uuid
 import json
 
 # Add your key and endpoint
-key = "a647b2fe5c524b8dbccb90fb73e61bb9"
+key = "insert_key" #removed personal key on April 24, 2022 (after assignment graded)
 endpoint = "https://api.cognitive.microsofttranslator.com"
 
 # Add your location, also known as region. The default is global.
